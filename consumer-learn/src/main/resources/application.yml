@@ -1,13 +1,26 @@
+web:
+  upload-path: /data/upload/
 spring:
 #设定ftl文件路径
   freemarker:
     template-loader-path: classpath:/templates/
     #设定静态文件路径，js,css等
   resources:
-    static-locations: classpath:/static/
+    static-locations: classpath:/static/,file:${web.upload-path}
   http:
     multipart:
-      max-file-size: 100Mb
-      max-request-size: 100Mb
+      max-file-size: 500Mb
+      max-request-size: 500Mb
+  mail:
+       host: smtp.163.com
+       username: 13218016163@163.com
+       password: luwei950412
+       properties:
+          mail:
+            smtp:
+              auth: true
+              starttls:
+                  enable: true
+                  required: true
 server:
-  port: 8012
+  port: 80

@@ -1,0 +1,207 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: DINCond-M;
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: DINCond-M;
+    font-weight: 400;
+    font-style: normal
+}
+
+.page {
+    margin-bottom: 25px
+}
+
+body {
+    background: #edeff0
+}
+
+.container {
+    width: 1200px
+}
+
+.seek-container {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden
+}
+
+#main {
+    padding: 20px 0 0 !important
+}
+
+.head {
+    width: 100%;
+    padding: 10px 0 25px;
+    margin: 0
+}
+
+.head h2 {
+    margin: 0;
+    line-height: 40px;
+    width: 790px;
+    margin: 0 0 10px 8px;
+    text-align: left
+}
+
+.content {
+    background: #fff;
+    width: 880px;
+    height: 800px;
+    margin: 0 auto;
+    padding: 20px 0 10px 0
+}
+
+#tbzss{
+    padding: 0 8px 40px 0;
+    width: 880px;
+}
+
+tr {
+    height: 100px
+}
+
+td {
+    vertical-align: top
+}
+
+td.label {
+    text-align: right;
+    color: #303538;
+    width: 80px;
+    line-height: 40px;
+    padding-right: 20px
+}
+
+.star {
+    color: red
+}
+
+.right {
+    float: right
+}
+
+input[type=text] {
+    border: solid 1px #99a1a6;
+    /*height: 20px;*/
+    line-height: 20px;
+    padding: 10px;
+    font-size: 14px;
+    /*font-family: Microsoft YaHei, SimSun, Arial*/
+}
+
+.class-name, .support, .deadline {
+    width: 400px
+}
+
+td.textarea {
+    height: 225px
+}
+
+textarea {
+    display: block;
+    height: 140px;
+    width: 678px;
+    border: solid 1px #99a1a6;
+    padding: 10px;
+    margin: 0;
+    resize: none;
+    font-size: 14px;
+    font-family: Microsoft YaHei, SimSun, Arial
+}
+
+.submit {
+    height: 40px;
+    line-height: 40px;
+    width: 140px;
+    color: #fff;
+    background: #39b94e;
+    cursor: pointer;
+    font-size: 14px
+}
+
+.submit:hover {
+    opacity: .8
+}
+
+
+/*input:focus, textarea:focus {
+    border: solid 1px #39b94e
+}
+*/
+.overflowed textarea {
+    border-color: #c9394a
+}
+
+.seek-l {
+    padding: 0 90px 0 18px
+}
+
+td.user-info {
+    position: relative
+}
+
+p.teacher-name, p.occupation, p.course-name {
+    line-height: 40px
+}
+
+.portrait {
+    height: 100px;
+    /*width: 75px;*/
+    position: absolute;
+    top: 1px;
+    right: 0;
+    text-align: center;
+    padding: 0 5px
+}
+
+.portrait img {
+    height: 75px;
+    width: 75px;
+    border-radius: 50%
+}
+
+.portrait .nickname {
+    display: block;
+    line-height: 16px;
+    margin-bottom: 10px;
+}
+
+.media-url, .occupation, .true-name, .phone-num, .expect-reward, .production-days {
+    width: 300px
+}
+
+/*.seek-l {
+    width: 798px;
+    padding: 19px 80px 500px 40px;
+    margin-bottom: -500px
+}*/
+
+.apply-introduction {
+    width: 538px
+}
+
+.font-num {
+    width: 559px
+}
+
+td.textarea{
+    position: relative;
+    width: 700px;
+}
+
+input[type="text"]:-moz-read-only{
+    border-color: #ccc;
+}
+
+input[type="text"]:read-only{
+    border-color: #ccc;
+}
+
+#apply-introduction:read-only{
+    border-color: #ccc;
+}

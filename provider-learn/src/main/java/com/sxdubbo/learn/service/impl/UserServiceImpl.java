@@ -29,6 +29,14 @@ public class UserServiceImpl implements UserService {
 //	public UserPO userPO;
 
     @Override
+    public User findByUserId(Integer id){
+        UserPO userPO=userRepository.findById(id);
+        User user=new User();
+        BeanUtils.copyProperties(userPO,user);
+        return user;
+    }
+
+    @Override
     public User addUser(User user) {
         UserPO userPO = new UserPO();
         System.out.println(userPO.getUsername() + "++++++++++++" + userPO.getPassword());
@@ -46,8 +54,28 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         UserPO userPO = new UserPO();
         userPO = userRepository.findByUsername(usernmae);
-        BeanUtils.copyProperties(userPO, user);
+        if(userPO !=null){
+            BeanUtils.copyProperties(userPO, user);
+        }else{
+            return null;
+        }
         return user;
+    }
+
+    @Override
+    public List<User> findByUserType(Integer userType){
+        List<User> userList= new ArrayList<User>();
+
+//        UserPO userPO = new UserPO();
+        List<UserPO> userPOList = userRepository.findByUserType(userType);
+
+        for(int i = 0 ; i < userPOList.size() ; i++) {
+            User user = new User();
+
+            BeanUtils.copyProperties(userPOList.get(i), user);
+            userList.add(user);
+        }
+        return userList;
     }
 
     @Override
@@ -83,7 +111,6 @@ public class UserServiceImpl implements UserService {
         userPO = userRepository.findById(id);
         userPO.setUserStatus(status);
         userPO1 = userRepository.save(userPO);
-//        userPO = userRepository.updateUserStatusById(status,id);
         BeanUtils.copyProperties(userPO, user);
         return user;
     }

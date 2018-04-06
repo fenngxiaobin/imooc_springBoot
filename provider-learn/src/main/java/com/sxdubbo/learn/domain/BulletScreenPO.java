@@ -20,15 +20,9 @@ public class BulletScreenPO implements Serializable {
     @GeneratedValue
     private Integer id;
 
+    private String danmu;
+
     private Integer videoId;
-
-    private Integer userId;
-
-    private String content;
-
-    private Date createDate;//发送时间
-
-    private Time sendTime;
 
     public Integer getId() {
         return id;
@@ -38,43 +32,19 @@ public class BulletScreenPO implements Serializable {
         this.id = id;
     }
 
+    public String getDanmu() {
+        return danmu;
+    }
+
+    public void setDanmu(String danmu) {
+        this.danmu = danmu;
+    }
+
     public Integer getVideoId() {
         return videoId;
     }
 
     public void setVideoId(Integer videoId) {
         this.videoId = videoId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Time getSendTime() {
-        return sendTime;
-    }
-
-    public void setSendTime(Time sendTime) {
-        this.sendTime = sendTime;
     }
 }

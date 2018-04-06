@@ -38,7 +38,8 @@ public class UserPO implements Serializable {
 
     private Date modifyDate;
 
-    private Integer userStatus;  //user status: 0:normal status; 1:待审核 2：frozen status
+    private Integer userStatus;  //user status: 0:normal status; 1:待审核 2：frozen status 3:审核未通过
+
 
 //    @ManyToMany(fetch = FetchType.EAGER)//立即从数据库中进行加载数据;
 //    @JoinTable(name = "SysUserRole", joinColumns = {@JoinColumn(name = "userId")}, inverseJoinColumns = {@JoinColumn(name = "roleId")})

@@ -138,5 +138,40 @@ public class User implements Serializable{
 //
 //    public void setRoleList(List<SysRole> roleList) {
 //        this.roleList = roleList;
-//    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj){
+            return true;
+        }
+        if(!(obj instanceof User)){
+            return false;
+        }
+        User p = (User) obj;
+//        只要用户相同
+        if(this.username.equals(p.username)&&this.password.equals(p.password)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id;
+        result = prime * result + ((username == null) ? 0 : username.hashCode());
+        result = prime * result + ((password == null) ? 0 : password.hashCode());
+        result = prime * result + ((headimg == null) ? 0 : headimg.hashCode());
+        result = prime * result + ((email == null) ? 0 : email.hashCode());
+        result = prime * result + ((position == null) ? 0 : position.hashCode());
+        result = prime * result + ((city == null) ? 0 : city.hashCode());
+        result = prime * result + ((introduction == null) ? 0 : introduction.hashCode());
+        result = prime * result + ((userType == null) ? 0 : userType.hashCode());
+        result = prime * result + ((createDate == null) ? 0 : createDate.hashCode());
+        result = prime * result + ((userStatus == null) ? 0 : userStatus.hashCode());
+        return result;
+    }
 }

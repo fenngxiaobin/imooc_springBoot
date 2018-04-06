@@ -1,8 +1,16 @@
-
     <style type="text/css">
         #active5{
             color:black;
             font-weight: bold;
+        }
+        .jalendar-wood{
+            box-sizing: content-box;
+        }
+        .option{
+            left: 0px !important;
+            top: 0px !important;
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
         }
     </style>
     <style>
@@ -13,9 +21,51 @@
         #p_active6{  display: none;  }
         #p_active7{  display: none;  }
     </style>
+    <link rel="stylesheet" href="${base}/mycenter/css/documentation.css" type="text/css" />
+    <link rel="stylesheet" href="${base}/mycenter/css/jalendar.css" type="text/css" />
+
 <#include  "../base/header.ftl" >
 
+<div class="content">
+    <article style="margin-left: -400px">
 
+        <!-- <div id="myId" class="jalendar">
+            <div class="added-event" data-date="14/12/2017" data-time="Tüm Gün" data-title="WWDC 13 on San Francisco, LA"></div>
+            <div class="added-event" data-date="16/12/2017" data-time="20:45" data-title="Tarkan İstanbul Concert on Harbiye Açık Hava Tiyatrosu"></div>
+            <div class="added-event" data-date="17/12/2017" data-time="21:00" data-title="CodeCanyon İstanbul Meeting on Starbucks, Kadıköy"></div>
+            <div class="added-event" data-date="17/12/2017" data-time="22:00" data-title="Front-End Design and Javascript Conferance on Haliç Kongre Merkezi"></div>
+            <div class="added-event" data-date="17/12/2017" data-time="22:00" data-title="Lorem ipsum dolor sit amet"></div>
+        </div>
+
+    <div id="myId2" class="jalendar"></div> -->
+
+        <div id="myId3" class="jalendar mid">
+            <#list scheduleLists as sl>
+                <div class="added-event" data-date="${(sl.day)!}" data-time="${(sl.time)!}" data-title="${(sl.title)!}" data-del="${(sl.id)!}"></div>
+            </#list>
+        </div>
+    </article>
+</div>
+
+
+
+<script type="text/javascript" src="${base}/mycenter/js/jquery-1.10.2.min.js"></script><!--jQuery-->
+<script type="text/javascript" src="${base}/mycenter/js/jalendar.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#myId').jalendar({
+            customDay: '2017/12/01',  // Format: Year/Month/Day
+            color: '#ed145a', // Unlimited Colors
+            lang: 'EN' // Format: English — 'EN', Türkçe — 'TR'
+        });
+        $('#myId2').jalendar({
+            customDay: '2016/02/29',
+            color: '#023447',
+            lang: 'ES'
+        });
+        $('#myId3').jalendar();
+    });
+</script>
 
 <!-- scripts -->
 <script src="js/jquery-latest.js"></script>

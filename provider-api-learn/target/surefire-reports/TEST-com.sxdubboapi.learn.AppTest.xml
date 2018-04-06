@@ -5,7 +5,7 @@
     <property name="sun.boot.library.path" value="F:\jdk8\jre\bin"/>
     <property name="java.vm.version" value="25.144-b01"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="F:\spring boot project\learn-dubbo\provider-api-learn"/>
+    <property name="maven.multiModuleProjectDirectory" value="F:\spring boot project\learn-dubbo-master\learn-dubbo\provider-api-learn"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="F:\spring boot project\learn-dubbo\provider-api-learn"/>
+    <property name="user.dir" value="F:\spring boot project\learn-dubbo-master\learn-dubbo\provider-api-learn"/>
     <property name="java.runtime.version" value="1.8.0_144-b01"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="F:\jdk8\jre\lib\endorsed"/>
@@ -29,7 +29,7 @@
     <property name="os.name" value="Windows 10"/>
     <property name="classworlds.conf" value="D:\sx_soft\tools\apache-maven-3.5.2\bin\..\bin\m2.conf"/>
     <property name="sun.jnu.encoding" value="GBK"/>
-    <property name="java.library.path" value="F:\jdk8\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;F:\jdk8\bin;D:\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\putty\;D:\sx_soft\tools\apache-maven-3.5.2\bin;E:\python3\Scripts\;E:\python3\;C:\Users\lw\AppData\Local\Microsoft\WindowsApps;;."/>
+    <property name="java.library.path" value="F:\jdk8\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;F:\jdk8\bin;D:\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\putty\;G:\Program Files\nodejs\;D:\sx_soft\tools\apache-maven-3.5.2\bin;E:\python3\Scripts\;E:\python3\;C:\Users\lw\AppData\Local\Microsoft\WindowsApps;C:\Users\lw\AppData\Roaming\npm;C:\Users\lw\AppData\Local\GitHubDesktop\bin;."/>
     <property name="maven.conf" value="D:\sx_soft\tools\apache-maven-3.5.2\bin\../conf"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>

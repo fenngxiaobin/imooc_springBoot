@@ -30,9 +30,7 @@ input.search{
 }
 
 .header{
-	margin-bottom: 60px;
 }
-.header h1,
 .header h2,
 .header h3,
 .header h4,
@@ -336,7 +334,7 @@ input.search{
 	-webkit-transition: opacity .1s ease;
 	-o-transition: opacity .1s ease;
 }
-#dashboard-menu a i.icon-chevron-down {
+#dashboard-menu a i.icon1-chevron-down {
 	position: relative;
 	float: right;
 	top: 5px;

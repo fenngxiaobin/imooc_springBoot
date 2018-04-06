@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <#include "../base/header.ftl">
+<#include "../qa/pageShow.ftl">
 <!-- start: Content -->
 <div id="content">
     <div class="panel box-shadow-none content-header">
@@ -24,14 +25,57 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="dataTables_length" id="datatables-example_length">
-                                        <label>Show
-                                            <select name="datatables-example_length" aria-controls="datatables-example"
-                                                    class="form-control input-sm">
-                                                <option value="10" selected="selected">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select> entries</label>
+                                        <form action="${base}/course/listAdmin" id="formxx" method="GET">
+                                            <label>Show
+                                                <select onclick="A(this)" id="select" name="f" aria-controls="datatables-example"
+                                                        class="form-control input-sm">
+                                                <#--<option id="o" value="" selected="selected">请选择</option>-->
+                                                    <option id="o4" value="4">4</option>
+                                                    <option id="o8" value="8">8</option>
+                                                    <option id="o12" value="12">12</option>
+                                                </select> entries</label>
+                                            <input type="hidden" name="p" value="1"></input>
+                                        </form>
+                                        <script>
+                                            //                                            var sel = document.getElementById('select');
+                                            ////                                            sel.value = 4;
+                                            //                                            sel.addEventListener("onchange", A(sel), false);
+
+                                            <#if page_Size??>
+                                                <#if page_Size?eval==4>
+                                                document.getElementById("o4").selected="selected";
+                                                </#if>
+                                                <#if page_Size?eval==8>
+                                                document.getElementById("o8").selected="selected";
+                                                </#if>
+                                                <#if page_Size?eval==12>
+                                                document.getElementById("o12").selected="selected";
+                                                </#if>
+                                            </#if>
+
+                                            function A(obj)
+                                            {
+
+//                                                alert(obj.value);
+                                                console.log(obj.value)
+                                                var form=document.getElementById("formxx")
+                                                form.submit()
+//                                                alert(obj.value);
+//                                                $.ajax({
+//                                                    type: "GET",
+//                                                    url: "/course/listAdmin",
+//                                                    data:{"s":1,"p":1,"f":obj.value},
+//                                                    success:function(data){
+//
+//                                                            location.reload();
+//
+//                                                    },
+//                                                    complete: function() {
+////                    alert("hello");
+//                                                    }
+//                                                });
+                                            }
+                                        </script>
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
@@ -59,8 +103,8 @@
                                                             添加课程信息
                                                         </h4>
                                                     </div>
-                                                    <form action="/course/addCourse" method="post">
-                                                        <div class="modal-body" style="height:350px;width:400px">
+                                                    <form action="${base}/course/addCourse" method="post" enctype="multipart/form-data">
+                                                        <div class="modal-body" style="height:450px;width:400px">
                                                             <label for="name" class="col-sm-2 control-label">课程名称</label>
                                                             <div class="col-sm-10">
                                                                 <input type="hidden" name="userId" value="${userInfo.id}" />
@@ -102,6 +146,11 @@
                                                                 <input type="text" style="width: 400px;" class="form-control" name="score"
                                                                        placeholder="请输入评分">
                                                             </div>
+                                                            <label for="name" class="col-sm-2 control-label">课程图片</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="file" style="width: 400px;" class="form-control" name="filePath"
+                                                                       placeholder="请输入课程图片">
+                                                            </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭
@@ -124,7 +173,7 @@
                                         <thead>
                                         <tr role="row">
                                             <th class="sorting" tabindex="0" aria-controls="datatables-example"
-                                                rowspan="1" colspan="1" style="width: 165px;"
+                                                rowspan="1" colspan="1" style="width: 185px;"
                                                 aria-label="Name: activate to sort column ascending">课程名称
                                             </th>
                                             <th class="sorting_desc" tabindex="0" aria-controls="datatables-example"
@@ -133,7 +182,7 @@
                                                 aria-sort="descending">时长
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="datatables-example"
-                                                rowspan="1" colspan="1" style="width: 73px;"
+                                                rowspan="1" colspan="1" style="width: 53px;"
                                                 aria-label="Office: activate to sort column ascending">课时
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="datatables-example"
@@ -167,7 +216,8 @@
                                                 <#assign count=count + 1 />
                                             <#--<#if "${lecture.userType}" != "1">-->
                                             <tr role="row" class="odd">
-                                                <td class="">${course.courseName}</td>
+                                                <td class=""><img width="50px" height="50px" style="border-radius: 30%" src="${base}/upload/${(course.filePath)!}" />
+                                                    &nbsp;&nbsp;&nbsp;${course.courseName}</td>
                                                 <td class="sorting_1">${course.duration}</td>
                                                 <td class="">
                                                 ${course.hour}
@@ -191,8 +241,8 @@
                                                 ${course.score}
                                                 </td>
                                                 <td>
-                                                    <a href="/chapter/chapterManage?id=${course.id}" title="课程管理">[课程管理]</a>
-                                                    <a href="/course/deleteCourse?id=${course.id}" onclick="javascript:return p_del()" title="删除">[删除]</a>
+                                                    <a href="${base}/chapter/chapterManage?id=${course.id}" title="课程管理">[课程管理]</a>
+                                                    <a href="${base}/course/deleteCourse?id=${course.id}" onclick="javascript:return p_del()" title="删除">[删除]</a>
 
                                                     <script language="javascript">
                                                         function p_del() {
@@ -217,48 +267,53 @@
                                                                         修改课程信息
                                                                     </h4>
                                                                 </div>
-                                                                <form action="/course/updateCourse" method="post">
-                                                                    <div class="modal-body" style="height:350px;width:400px">
+                                                                <form action="${base}/course/updateCourse" method="post" enctype="multipart/form-data">
+                                                                    <div class="modal-body" style="height:450px;width:400px">
                                                                         <label for="name" class="col-sm-2 control-label">课程名称</label>
                                                                         <div class="col-sm-10">
                                                                             <input type="hidden" name="id" value="${course.id}" />
                                                                             <input type="text" style="width: 400px;" class="form-control" name="courseName"
-                                                                                  value="${(course.courseName)!}" placeholder="请输入课程名称">
+                                                                                   value="${(course.courseName)!}" placeholder="请输入课程名称">
                                                                         </div>
                                                                         <label for="name" class="col-sm-2 control-label">章节数目</label>
                                                                         <div class="col-sm-10">
                                                                             <input type="text" style="width: 400px;" class="form-control" name="chapterNum"
-                                                                                  value="${(course.chapterNum)!}" placeholder="请输入章节数目">
+                                                                                   value="${(course.chapterNum)!}" placeholder="请输入章节数目">
                                                                         </div>
                                                                         <label for="name" class="col-sm-2 control-label">时长</label>
                                                                         <div class="col-sm-10">
                                                                             <input type="text" style="width: 400px;" class="form-control" name="duration"
-                                                                                  value="${(course.duration)!}" placeholder="请输入时长">
+                                                                                   value="${(course.duration)!}" placeholder="请输入时长">
                                                                         </div>
                                                                         <label for="name" class="col-sm-2 control-label">课时</label>
                                                                         <div class="col-sm-10">
                                                                             <input type="text" style="width: 400px;" class="form-control" name="hour"
-                                                                                  value="${(course.hour)!}" placeholder="请输入课时">
+                                                                                   value="${(course.hour)!}" placeholder="请输入课时">
                                                                         </div>
                                                                         <label for="name" class="col-sm-2 control-label">类别</label>
                                                                         <div class="col-sm-10">
                                                                             <input type="text" style="width: 400px;" class="form-control" name="type"
-                                                                                  value="${(course.type)!}" placeholder="请输入类别">
+                                                                                   value="${(course.type)!}" placeholder="请输入类别">
                                                                         </div>
                                                                         <label for="name" class="col-sm-2 control-label">简介</label>
                                                                         <div class="col-sm-10">
                                                                             <input type="text" style="width: 400px;" class="form-control" name="introduction"
-                                                                                  value="${(course.introduction)!}" placeholder="请输入简介">
+                                                                                   value="${(course.introduction)!}" placeholder="请输入简介">
                                                                         </div>
                                                                         <label for="name" class="col-sm-2 control-label">难易等级</label>
                                                                         <div class="col-sm-10">
                                                                             <input type="text" style="width: 400px;" class="form-control" name="level"
-                                                                                  value="${(course.level)!}" placeholder="请输入难易等级">
+                                                                                   value="${(course.level)!}" placeholder="请输入难易等级">
                                                                         </div>
                                                                         <label for="name" class="col-sm-2 control-label">评分</label>
                                                                         <div class="col-sm-10">
                                                                             <input type="text" style="width: 400px;" class="form-control" name="score"
-                                                                                  value="${(course.score)!}" placeholder="请输入评分">
+                                                                                   value="${(course.score)!}" placeholder="请输入评分">
+                                                                        </div>
+                                                                        <label for="name" class="col-sm-2 control-label">课程图片</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="file" style="width: 400px;" class="form-control" name="filePath"
+                                                                                   placeholder="请输入课程图片">
                                                                         </div>
                                                                     </div>
                                                                     <div class="modal-footer">
@@ -291,41 +346,19 @@
                                          aria-live="polite">Showing 1 to 10 of 57 entries
                                     </div>
                                 </div>
-                                <div class="col-sm-7">
-                                    <div class="dataTables_paginate paging_simple_numbers"
-                                         id="datatables-example_paginate">
-                                        <ul class="pagination">
-                                            <li class="paginate_button previous disabled"
-                                                id="datatables-example_previous">
-                                                <a href="#" aria-controls="datatables-example" data-dt-idx="0"
-                                                   tabindex="0">Previous</a>
-                                            </li>
-                                            <li class="paginate_button active">
-                                                <a href="#" aria-controls="datatables-example" data-dt-idx="1"
-                                                   tabindex="0">1</a>
-                                            </li>
-                                            <li class="paginate_button "><a href="#" aria-controls="datatables-example"
-                                                                            data-dt-idx="2" tabindex="0">2</a>
-                                            </li>
-                                            <li class="paginate_button "><a href="#" aria-controls="datatables-example"
-                                                                            data-dt-idx="3" tabindex="0">3</a>
-                                            </li>
-                                            <li class="paginate_button "><a href="#" aria-controls="datatables-example"
-                                                                            data-dt-idx="4" tabindex="0">4</a>
-                                            </li>
-                                            <li class="paginate_button "><a href="#" aria-controls="datatables-example"
-                                                                            data-dt-idx="5" tabindex="0">5</a>
-                                            </li>
-                                            <li class="paginate_button "><a href="#" aria-controls="datatables-example"
-                                                                            data-dt-idx="6" tabindex="0">6</a>
-                                            </li>
-                                            <li class="paginate_button next" id="datatables-example_next">
-                                                <a href="#" aria-controls="datatables-example" data-dt-idx="7"
-                                                   tabindex="0">Next</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                            <#--新添加的分页系统-->
+                            <#--<#if current_Page??>-->
+                            <#--<p>${current_Page}</p>-->
+                            <#--</#if>-->
+                            <#--<#if course_size??>-->
+                            <#--<p>${course_size}</p>-->
+                            <#--</#if>-->
+                            <#if page_Size??>
+                                <@pageShow (course_size/page_Size?eval)?ceiling,current_Page,"course/listAdmin?s=1&f=${page_Size}"/>
+                            <#else >
+                                <@pageShow (course_size/4)?ceiling,current_Page,"course/listAdmin?s=1"/>
+                            </#if>
+                            <#--<@pageShow (course_size/page_Size)?ceiling,current_Page,"course/listAdmin?s=1"/>-->
                             </div>
                         </div>
                     </div>

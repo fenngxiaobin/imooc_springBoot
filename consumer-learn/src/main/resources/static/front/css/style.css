@@ -97,7 +97,7 @@ h1, h2, h3, h4, h5, h6, figure {
   z-index: 1001;
 }
 .fh5co-nav .top-menu {
-  padding: 22px 0;
+  padding: 12px 0 6px;
 }
 .fh5co-nav .top {
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -148,6 +148,7 @@ h1, h2, h3, h4, h5, h6, figure {
   font-size: 14px;
 }
 .fh5co-nav #fh5co-logo {
+  width: 160px;
   font-size: 24px;
   margin: 0;
   padding: 0;
@@ -187,7 +188,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 .fh5co-nav ul li a {
   font-size: 14px;
-  padding: 30px 15px;
+  padding: 30px 5%;
   color: rgba(0, 0, 0, 0.9);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -415,7 +416,7 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-staff,
 #fh5co-contact,
 #fh5co-footer {
-  padding: 7em 0;
+  padding: 25px 0;
   clear: both;
 }
 @media screen and (max-width: 768px) {

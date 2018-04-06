@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <#include "../base/header.ftl">
+<#include "../qa/pageShow.ftl">
 <!-- start: Content -->
 <div id="content">
     <div class="panel box-shadow-none content-header">
@@ -22,24 +23,24 @@
                         <div id="datatables-example_wrapper"
                              class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="dataTables_length" id="datatables-example_length">
-                                        <label>Show
-                                            <select name="datatables-example_length" aria-controls="datatables-example"
-                                                    class="form-control input-sm">
-                                                <option value="10" selected="selected">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select> entries</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div id="datatables-example_filter" class="dataTables_filter">
-                                        <label>Search:<input class="form-control input-sm" placeholder=""
-                                                             aria-controls="datatables-example" type="search"></label>
-                                    </div>
-                                </div>
+                                <#--<div class="col-sm-6">-->
+                                    <#--<div class="dataTables_length" id="datatables-example_length">-->
+                                        <#--<label>Show-->
+                                            <#--<select name="datatables-example_length" aria-controls="datatables-example"-->
+                                                    <#--class="form-control input-sm">-->
+                                                <#--<option value="10" selected="selected">10</option>-->
+                                                <#--<option value="25">25</option>-->
+                                                <#--<option value="50">50</option>-->
+                                                <#--<option value="100">100</option>-->
+                                            <#--</select> entries</label>-->
+                                    <#--</div>-->
+                                <#--</div>-->
+                                <#--<div class="col-sm-6">-->
+                                    <#--<div id="datatables-example_filter" class="dataTables_filter">-->
+                                        <#--<label>Search:<input class="form-control input-sm" placeholder=""-->
+                                                             <#--aria-controls="datatables-example" type="search"></label>-->
+                                    <#--</div>-->
+                                <#--</div>-->
                             <#--<div class="col-sm-3">-->
                             <#--<div id="datatables-example_filter" class="dataTables_filter">-->
                             <#--<button class=" btn ripple-infinite btn-3d btn-primary" value="primary" style="margin-top: -10px;">-->
@@ -102,34 +103,35 @@
                                             <#if "${lecture.userType}" != "1">
                                                 <#assign count=count+1>
                                             <tr role="row" class="odd">
-                                                <td class="">${lecture.username}</td>
+                                                <td class=""><img width="50px" height="50px" style="border-radius: 30%" src="${base}/upload/${(lecture.headimg)!}" />
+                                                &nbsp;&nbsp;&nbsp;${lecture.username}</td>
                                                 <td class="sorting_1">${lecture.email}</td>
                                                 <td class="">
                                                     <#if lecture.userStatus ==0 ><i class="fa fa-check-square-o"
                                                                                     style="color: green">正常</i>
-                                                        <#if "${userInfo.userType}"=="0">
-                                                            <#if "${lecture.userType}"=="0">
+                                                        <#if "${(userInfo.userType)!}"=="0">
+                                                            <#if "${(lecture.userType)!}"=="0">
                                                                 <span title="您无权冻结管理员">[冻结锁定]</span>
                                                             <#else>
-                                                                <a href="/user/view?id=${lecture.id}" title="操作冻结">[冻结锁定]</a>
+                                                                <a href="${base}/user/view?id=${lecture.id}" title="操作冻结">[冻结锁定]</a>
                                                             </#if>
                                                         </#if>
                                                     <#elseif lecture.userStatus == 1><i class="fa fa-hourglass-half"
                                                                                         style="color:orange">待审核</i>
-                                                        <#if "${userInfo.userType}"=="0">
-                                                            <a href="/user/view?id=${lecture.id}"
+                                                        <#if "${(userInfo.userType)!}"=="0">
+                                                            <a href="${base}/user/view?id=${lecture.id}"
                                                                title="操作通过审核">[审核操作]</a>
                                                         </#if>
                                                     <#elseif lecture.userStatus == 2>
                                                         <i class="fa fa-lock" style="color: red">锁定</i>
-                                                        <#if "${userInfo.userType}"=="0">
-                                                            <a href="/user/view?id=${lecture.id}"
+                                                        <#if "${(userInfo.userType)!}"=="0">
+                                                            <a href="${base}/user/view?id=${lecture.id}"
                                                                title="操作解除冻结">[解除冻结]</a>
                                                         </#if>
                                                     <#else>
                                                         <i class="fa fa-times" style="color: grey">审核未通过</i>
-                                                        <#if "${userInfo.userType}"=="0">
-                                                            <a href="/user/view?id=${lecture.id}"
+                                                        <#if "${(userInfo.userType)!}"=="0">
+                                                            <a href="${base}/user/view?id=${lecture.id}"
                                                                title="操作审核">[重新审核]</a>
                                                         </#if>
                                                     </#if>
@@ -146,8 +148,8 @@
                                                     &nbsp;
                                                 </#if></td>
                                                 <td>
-                                                    <#if "${userInfo.userType}"=="0">
-                                                        <a href="/user/delete?id=${lecture.id}"
+                                                    <#if "${(userInfo.userType)!}"=="0">
+                                                        <a href="${base}/user/delete?id=${lecture.id}"
                                                            onclick="javascript:return p_del()" title="删除">[删除]</a>
 
                                                         <a href="" data-toggle="modal" data-target="#myModal_update${count}" title="修改用户信息">[修改]</a>
@@ -176,7 +178,7 @@
                                                                         修改用户信息
                                                                     </h4>
                                                                 </div>
-                                                                <form action="/user/updateUser" method="post" enctype="multipart/form-data">
+                                                                <form action="${base}/user/updateUser" method="post" enctype="multipart/form-data">
                                                                     <div class="modal-body" style="height:550px;width:400px">
 
                                                                         <label for="name" class="col-sm-2 control-label">用户名</label>
@@ -212,7 +214,7 @@
                                                                         </div>
                                                                         <label for="name" class="col-sm-2 control-label">职位</label>
                                                                         <div class="col-sm-10">
-                                                                            <input type="text" style="width: 400px;" class="form-control" name="city"
+                                                                            <input type="text" style="width: 400px;" class="form-control" name="position"
                                                                                    value="${(lecture.position)!}" placeholder="请输入用户职位">
                                                                         </div>
 
@@ -253,41 +255,9 @@
                                          aria-live="polite">Showing 1 to 10 of 57 entries
                                     </div>
                                 </div>
-                                <div class="col-sm-7">
-                                    <div class="dataTables_paginate paging_simple_numbers"
-                                         id="datatables-example_paginate">
-                                        <ul class="pagination">
-                                            <li class="paginate_button previous disabled"
-                                                id="datatables-example_previous">
-                                                <a href="#" aria-controls="datatables-example" data-dt-idx="0"
-                                                   tabindex="0">Previous</a>
-                                            </li>
-                                            <li class="paginate_button active">
-                                                <a href="#" aria-controls="datatables-example" data-dt-idx="1"
-                                                   tabindex="0">1</a>
-                                            </li>
-                                            <li class="paginate_button "><a href="#" aria-controls="datatables-example"
-                                                                            data-dt-idx="2" tabindex="0">2</a>
-                                            </li>
-                                            <li class="paginate_button "><a href="#" aria-controls="datatables-example"
-                                                                            data-dt-idx="3" tabindex="0">3</a>
-                                            </li>
-                                            <li class="paginate_button "><a href="#" aria-controls="datatables-example"
-                                                                            data-dt-idx="4" tabindex="0">4</a>
-                                            </li>
-                                            <li class="paginate_button "><a href="#" aria-controls="datatables-example"
-                                                                            data-dt-idx="5" tabindex="0">5</a>
-                                            </li>
-                                            <li class="paginate_button "><a href="#" aria-controls="datatables-example"
-                                                                            data-dt-idx="6" tabindex="0">6</a>
-                                            </li>
-                                            <li class="paginate_button next" id="datatables-example_next">
-                                                <a href="#" aria-controls="datatables-example" data-dt-idx="7"
-                                                   tabindex="0">Next</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                            <#--新添加的分页系统-->
+                            <@pageShow (lectureListSize/4)?ceiling,current_Page,"user/lecture?s=1"/>
+
                             </div>
                         </div>
                     </div>
